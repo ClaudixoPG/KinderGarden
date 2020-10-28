@@ -14,7 +14,6 @@ public class Element : MonoBehaviour, IPointerDownHandler
         if (!inNeeded)
         {
             clicks++;
-            //Debug.Log(clicks);
         }
     }
 

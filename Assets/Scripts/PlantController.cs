@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,7 +25,7 @@ public class PlantController : MonoBehaviour
     {
         targetTime -= Time.deltaTime;
 
-        foreach (Plant p in plants)
+        foreach (Plant p in plants.ToList())
         {
             //tiempo para actualizar necesidad
             if (!p.inNeeded && targetTime <= 0.0f)
@@ -57,7 +58,7 @@ public class PlantController : MonoBehaviour
                     break;
                 case 450: p.state = PlantState.Fruit;
                     plant_img.sprite = p.imgs[3];
-                    if (plants.Count < pots.Length)
+                    if (plants.Count < pots.Length && !p.instanceNext)
                     {
                         var aux = Random.Range(0, plantPref.Length);
 
@@ -65,7 +66,8 @@ public class PlantController : MonoBehaviour
                         var newPlant = Instantiate(plantPref[aux], pots[plants.Count].GetComponent<RectTransform>()); 
 
                         plants.Add(newPlant.GetComponent<Plant>());
-                        newPlant.GetComponent<RectTransform>().anchoredPosition = pots[pots.Length].GetComponent<RectTransform>().anchoredPosition;
+                        p.instanceNext = true;
+                        //newPlant.GetComponent<RectTransform>().anchoredPosition = pots[plants.Count].GetComponent<RectTransform>().anchoredPosition;
                         //instantiate prefab in pot pos
                     }
                     else

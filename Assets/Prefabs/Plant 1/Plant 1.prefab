@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8628168462932898825}
   - component: {fileID: 8628168462932898824}
   m_Layer: 5
-  m_Name: Plant 2
+  m_Name: Plant 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,3 +102,8 @@ MonoBehaviour:
   inNeeded: 1
   clicks: 0
   state: 0
+  imgs:
+  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

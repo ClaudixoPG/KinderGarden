@@ -6,12 +6,8 @@ using UnityEngine.Experimental.UIElements;
 public class Plant : Element
 {
     public PlantState state = PlantState.Germination;
-    public Sprite[] imgs;
-
-    /*public Plant(PlantState state)
-    {
-        this.state = state;
-    }*/
+    public Sprite[] imgs; 
+    public bool instanceNext = false;
 }
 
 public enum PlantState
