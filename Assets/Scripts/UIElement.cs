@@ -10,7 +10,7 @@ public class UIElement : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     private Vector2 initialPos;
-    public ElementNeeded delivered;
+    public Element delivered;
 
     private void Awake()
     {
@@ -35,6 +35,8 @@ public class UIElement : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     public void OnEndDrag(PointerEventData eventData)
     {
         //Debug.Log("OnEndDrag");
+        
+
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
         rectTransform.anchoredPosition = initialPos;
