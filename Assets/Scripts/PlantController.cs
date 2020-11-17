@@ -12,15 +12,20 @@ public class PlantController : MonoBehaviour
     public GameObject[] plantPref;
     public List<Plant> plants = new List<Plant>();
 
-    // Update is called once per frame
+
+    public GameObject GetPlantPrefab()
+    {
+        return plantPref[Random.Range(0, plantPref.Length)];
+    }
 
     private void Awake()
     {
         //var aux = new Plant();
         var aux = Instantiate(plantPref[0], pots[0].GetComponent<RectTransform>());
+        aux.transform.SetParent(pots[0].transform);
         plants.Add(aux.GetComponent<Plant>());
     }
-
+    /*
     void Update()
     {
         targetTime -= Time.deltaTime;
@@ -28,14 +33,14 @@ public class PlantController : MonoBehaviour
         foreach (Plant p in plants.ToList())
         {
             //tiempo para actualizar necesidad
-            if (!p.inNeeded && targetTime <= 0.0f)
+            if (!p.inNeed && targetTime <= 0.0f)
             {
                 var aux = Random.Range(0, 4);
 
-                if ((ElementNeeded)aux != ElementNeeded.Nothing)
+                if ((Element)aux != Element.Nothing)
                 {
-                    p.inNeeded = true;
-                    p.needed = (ElementNeeded)aux;
+                    p.inNeed = true;
+                    p.needed = (Element)aux;
                 }
 
                 targetTime = 10.0f;
@@ -48,16 +53,16 @@ public class PlantController : MonoBehaviour
                 //aqui debiera cambiar la imagen
                 
                 case 0: p.state = PlantState.Germination;
-                    plant_img.sprite = p.imgs[0];
+                    plant_img.sprite = p.sprites[0];
                     break;
                 case 150: p.state = PlantState.Growth;
-                    plant_img.sprite = p.imgs[1];
+                    plant_img.sprite = p.sprites[1];
                     break;
                 case 300: p.state = PlantState.Blossom;
-                    plant_img.sprite = p.imgs[2];
+                    plant_img.sprite = p.sprites[2];
                     break;
                 case 450: p.state = PlantState.Fruit;
-                    plant_img.sprite = p.imgs[3];
+                    plant_img.sprite = p.sprites[3];
                     if (plants.Count < pots.Length && !p.instanceNext)
                     {
                         var aux = Random.Range(0, plantPref.Length);
@@ -77,5 +82,6 @@ public class PlantController : MonoBehaviour
                     break;
             }
         }
-    }
+    }*/
+
 }
