@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class Plant : MonoBehaviour, IPointerDownHandler
 {
     public Sprite[] sprites;
-    public SpriteRenderer renderer;
+    public SpriteRenderer rend;
 
     public Element needed = Element.Water;
     public bool inNeed = true;
@@ -20,8 +20,8 @@ public class Plant : MonoBehaviour, IPointerDownHandler
 
     private void Start()
     {
-        renderer = GetComponent<SpriteRenderer>();
-        renderer.sprite = sprites[0];
+        rend = GetComponent<SpriteRenderer>();
+        rend.sprite = sprites[0];
     }
 
     private void Update()

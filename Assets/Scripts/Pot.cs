@@ -28,7 +28,5 @@ public class Pot : MonoBehaviour, IDropHandler
             PlantController p = FindObjectOfType<PlantController>();
             plant = Instantiate(p.GetPlantPrefab(), transform).GetComponent<Plant>();
         }
-        
-        
     }
 }
