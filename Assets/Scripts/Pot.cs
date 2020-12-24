@@ -19,7 +19,7 @@ public class Pot : MonoBehaviour, IDropHandler
             //SINO, RETORNA
             plant.ReceiveElement(evento.GetComponent<UIElement>().delivered);
         }
-        else if(evento.GetComponent<UIElement>().delivered == Element.Seed)
+        else if(evento.GetComponent<UIElement>().delivered == Element.SEED)
         {
             PlantController p = FindObjectOfType<PlantController>();
             plant = Instantiate(p.GetPlantPrefab(), transform).GetComponent<Plant>();
