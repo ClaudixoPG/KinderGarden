@@ -17,11 +17,7 @@ public class Pot : MonoBehaviour, IDropHandler
             //REVISA SI ES DEL TIPO QUE CORRESPONDE
             //SI ES DEL TIPO QUE CORRESPONDE, SUPLE NECESIDAD
             //SINO, RETORNA
-            if (plant.inNeed && plant.needed == evento.GetComponent<UIElement>().delivered)
-            {
-                plant.inNeed = false;
-                plant.needed = Element.Nothing;
-            }
+            plant.ReceiveElement(evento.GetComponent<UIElement>().delivered);
         }
         else if(evento.GetComponent<UIElement>().delivered == Element.Seed)
         {
