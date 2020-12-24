@@ -5,10 +5,10 @@ using UnityEngine.EventSystems;
 
 public enum Element
 {
-    Water,
-    Sun ,
-    Fertilizer,
-    Air,
-    Seed,
-    Nothing
+    NONE,
+    WATER,
+    SUN ,
+    FERTILIZER,
+    AIR,
+    SEED
 }
