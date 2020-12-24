@@ -19,9 +19,12 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        OnFinish = new UnityEvent();
-        OnInit = new UnityEvent();
-        OnTick = new UnityEvent();
+        if(OnFinish == null)
+            OnFinish = new UnityEvent();
+        if (OnInit == null)
+            OnInit = new UnityEvent();
+        if (OnTick == null)
+            OnTick = new UnityEvent();
         timer = 0;
         //Init();
     }

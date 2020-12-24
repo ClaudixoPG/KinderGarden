@@ -7,6 +7,12 @@ public class Pot : MonoBehaviour, IDropHandler
 {
     Plant plant;
 
+    public void Awake()
+    {
+        FindObjectOfType<PlantController>().Suscribe(gameObject);
+        gameObject.SetActive(false);
+    }
+
     public void OnDrop(PointerEventData eventData)
     {
         var evento = eventData.pointerDrag;
@@ -14,9 +20,6 @@ public class Pot : MonoBehaviour, IDropHandler
 
         if (plant != null)
         {
-            //REVISA SI ES DEL TIPO QUE CORRESPONDE
-            //SI ES DEL TIPO QUE CORRESPONDE, SUPLE NECESIDAD
-            //SINO, RETORNA
             plant.ReceiveElement(evento.GetComponent<UIElement>().delivered);
         }
         else if(evento.GetComponent<UIElement>().delivered == Element.SEED)

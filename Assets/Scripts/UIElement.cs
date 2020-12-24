@@ -38,10 +38,7 @@ public class UIElement : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
         
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(eventData.position);
-
-        Debug.Log(eventData.position + " - " + Input.mousePosition);
-        Debug.DrawRay(ray.origin, ray.direction * 100, Color.red, 100, true);
-
+        
         if (Physics.Raycast(ray, out hit))
         {
             Pot pot = hit.transform.gameObject.GetComponent<Pot>();

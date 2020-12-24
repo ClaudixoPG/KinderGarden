@@ -21,7 +21,7 @@ public class Plant : MonoBehaviour, IPointerDownHandler
     private int clicks;
     public PlantState state;
 
-    public bool instanceNext = false;
+    //public bool instanceNext = false;
 
     private void Start()
     {
@@ -29,6 +29,7 @@ public class Plant : MonoBehaviour, IPointerDownHandler
         rend.sprite = sprites[0];
         clicks = 0;
         upgradeable = false;
+        timer.Init();
     }
 
     public void ReceiveElement(Element e)
@@ -51,7 +52,7 @@ public class Plant : MonoBehaviour, IPointerDownHandler
     public void AskElement()
     {
         inNeed = true;
-        elementNeeded = (Element)Random.Range(0, System.Enum.GetValues(typeof(Element)).Length);
+        elementNeeded = (Element)Random.Range(1, System.Enum.GetValues(typeof(Element)).Length-1);
     }
 
     private void Update()
@@ -61,6 +62,7 @@ public class Plant : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        Debug.Log("clicked");
         if (!upgradeable) return;
 
         clicks++;

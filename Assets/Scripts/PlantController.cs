@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class PlantController : MonoBehaviour
 {
     //public List<Plant> plants;
-    public GameObject []pots;
+    private List<GameObject> pots;
+    private int activePots;
     public float targetTime = 10.0f;
     public GameObject[] plantPref;
     public List<Plant> plants = new List<Plant>();
@@ -18,12 +19,22 @@ public class PlantController : MonoBehaviour
         return plantPref[Random.Range(0, plantPref.Length)];
     }
 
-    private void Awake()
+    private void Start()
     {
-        //var aux = new Plant();
-        var aux = Instantiate(plantPref[0], pots[0].GetComponent<RectTransform>());
-        aux.transform.SetParent(pots[0].transform);
-        plants.Add(aux.GetComponent<Plant>());
+        NewPot();
+    }
+
+    public void NewPot()
+    {
+        pots[activePots].SetActive(true);
+        activePots++;
+    }
+
+    public void Suscribe(GameObject pot)
+    {
+        if(pots == null) pots = new List<GameObject>();
+        if (pots.Contains(pot)) return;
+        pots.Add(pot);
     }
     /*
     void Update()
