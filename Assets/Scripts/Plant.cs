@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Experimental.UIElements;
 using UnityEngine.EventSystems;
 
-public class Plant : MonoBehaviour, IPointerDownHandler
+public class Plant : MonoBehaviour
 {
     public Sprite[] sprites;
     private SpriteRenderer rend;
@@ -15,17 +15,22 @@ public class Plant : MonoBehaviour, IPointerDownHandler
 
     public int satisfactionNeeded;
     private int satisfactionLvl;
+    [SerializeField]
     private bool upgradeable;
 
     public int clicksNeeded;
     private int clicks;
     public PlantState state;
 
+    private Collider col;
+
     //public bool instanceNext = false;
 
     private void Start()
     {
         rend = GetComponent<SpriteRenderer>();
+        col = GetComponent<Collider>();
+        col.enabled = false;
         rend.sprite = sprites[0];
         clicks = 0;
         upgradeable = false;
@@ -42,6 +47,7 @@ public class Plant : MonoBehaviour, IPointerDownHandler
         if(satisfactionLvl >= satisfactionNeeded)
         {
             upgradeable = true;
+            col.enabled = true;
         }
         else
         {
@@ -60,11 +66,23 @@ public class Plant : MonoBehaviour, IPointerDownHandler
         
     }
 
+    public void OnMouseDown()
+    {
+        Debug.Log("ORA");
+        if (!upgradeable) return;
+        clicks++;
+        if (clicks >= clicksNeeded)
+        {
+            clicks = 0;
+            upgradeable = false;
+            Upgrade();
+        }
+    }
+    /*
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("clicked");
+        Debug.Log("ORA");
         if (!upgradeable) return;
-
         clicks++;
         if(clicks >= clicksNeeded)
         {
@@ -72,16 +90,29 @@ public class Plant : MonoBehaviour, IPointerDownHandler
             upgradeable = false;
             Upgrade();
         }
-    }
+    }*/
 
     public void Upgrade()
     {
         if (state >= PlantState.FRUIT) return;
+        col.enabled = false;
         state += 1;
         rend.sprite = sprites[(int)state];
         timer.Restart();
     }
-
+    /*
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("ORA");
+        if (!upgradeable) return;
+        clicks++;
+        if (clicks >= clicksNeeded)
+        {
+            clicks = 0;
+            upgradeable = false;
+            Upgrade();
+        }
+    }*/
 }
 
 public enum PlantState
