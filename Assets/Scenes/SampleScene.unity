@@ -1060,7 +1060,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTime: 5
   plantPref:
-  - {fileID: 8628168462932898826, guid: c645098da81fedf418c252df1ff88cda, type: 3}
+  - {fileID: 1048545710341227137, guid: da812ebfe7f06494499430ae5c5b76a2, type: 3}
+  - {fileID: 3580307573916006080, guid: 6d455f9601f49ce40a7ba1e7a5df6deb, type: 3}
+  - {fileID: 8875303770345362916, guid: 1431910d330bb804d857e914fa4a0be0, type: 3}
+  - {fileID: 153249808088683756, guid: cb0fe9c0460734c4abcbd2960b773ec9, type: 3}
+  - {fileID: 7572738854742878710, guid: 30b359330201d6a4bb031f2be5326d62, type: 3}
   plants: []
 --- !u!1 &831785852
 GameObject:
@@ -2948,5 +2952,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pot
       objectReference: {fileID: 0}
+    - target: {fileID: 2144192073615434586, guid: 3d68e60a4e6d1f84fa36629a35d2afef,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: afe8c8629c763cb4c8a2b0ac9482cb45,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d68e60a4e6d1f84fa36629a35d2afef, type: 3}
